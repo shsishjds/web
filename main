@@ -1,0 +1,29 @@
+import random
+
+def start_game():
+    print("==== 猜数字游戏 ====")
+    secret_num = random.randint(1, 100)
+    count = 0
+    print("我已经想好了一个1~100之间的数字，你来猜猜看！")
+
+    while True:
+        user_str = input("\n请输入数字：")
+        try:
+            num = int(user_str)
+            count += 1
+            if num < 1 or num > 100:
+                print("请输入1到100范围内的数字！")
+                continue
+            if num < secret_num:
+                print("猜小了！再试试更大的数")
+            elif num > secret_num:
+                print("猜大了！再试试更小的数")
+            else:
+                print(f"\n🎉 恭喜猜对！答案是{secret_num}")
+                print(f"你一共猜了 {count} 次")
+                break
+        except ValueError:
+            print("❌ 输入错误，请输入整数！")
+
+if __name__ == "__main__":
+    start_game()
